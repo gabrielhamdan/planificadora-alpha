@@ -1,3 +1,7 @@
+INSERT INTO professor (usuario, senha, nome, cpf, area, ativo) VALUES ('master', '{noop}1', 'Professor Um', '12345678901', 'Matemática', 1);
+
+INSERT INTO privilegios (usuario_id, privilegio) VALUES (1, 'ROLE_PROFESSOR');
+
 INSERT INTO aluno (nome, cpf, data_nascimento, email, telefone, endereco, nivel, objetivo_aprendizado, situacao) VALUES
 ('João Silva', '123.456.789-00', '2000-01-15', 'joao.silva@example.com', '(11) 91234-5678', 'Rua A, 123', 'Graduado', 'Aprender mais sobre programação em Java.', 'ALUNO'),
 ('Maria Oliveira', '987.654.321-00', '1998-03-22', 'maria.oliveira@example.com', '(21) 99876-5432', 'Avenida B, 456', 'Pós-Graduado', 'Aprofundar conhecimentos em Machine Learning.', 'ALUNO'),
