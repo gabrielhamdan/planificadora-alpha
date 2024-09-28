@@ -1,6 +1,6 @@
 package com.es.planificadoraalpha.alunos;
 
-import com.es.planificadoraalpha.services.ICrudService;
+import com.es.planificadoraalpha.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AlunoService implements ICrudService<Aluno> {
+public class AlunoService implements IService<Aluno> {
 
     private AlunoRepository alunoRepository;
 
@@ -24,8 +24,8 @@ public class AlunoService implements ICrudService<Aluno> {
 
     @Override
     public Aluno findById(int id) {
-        Optional<Aluno> result = alunoRepository.findById(id);
-        return result.orElse(null);
+        Optional<Aluno> restult = alunoRepository.findById(id);
+        return restult.orElse(null);
     }
 
     @Override
