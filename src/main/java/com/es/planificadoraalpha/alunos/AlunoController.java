@@ -8,7 +8,7 @@ import java.util.List;
 @RequestMapping("${app.base-url}/alunos")
 public class AlunoController {
 
-    private AlunoService alunoService;
+    private final AlunoService alunoService;
 
     public AlunoController(AlunoService alunoService) {
         this.alunoService = alunoService;
