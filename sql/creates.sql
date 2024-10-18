@@ -1,4 +1,3 @@
-USE planificadora_alpha;
 USE
 planificadora_alpha;
 
