@@ -1,10 +1,8 @@
-package com.es.planificadoraalpha.service;
-
-import jakarta.transaction.Transactional;
+package com.es.planificadoraalpha.services;
 
 import java.util.List;
 
-public interface IService<T> {
+public interface ICrudService<T> {
 
     public List<T> findAll();
 
