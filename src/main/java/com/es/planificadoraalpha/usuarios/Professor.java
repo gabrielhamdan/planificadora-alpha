@@ -1,5 +1,6 @@
 package com.es.planificadoraalpha.usuarios;
 
+import com.es.planificadoraalpha.alunos.Aluno;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

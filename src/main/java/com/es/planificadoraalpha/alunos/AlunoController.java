@@ -16,7 +16,7 @@ public class AlunoController {
 
     @GetMapping
     public List<Aluno> listarAlunos() {
-        return alunoService.findAll();
+        return alunoService.findByProfessorId();
     }
 
     @GetMapping("/{id}")

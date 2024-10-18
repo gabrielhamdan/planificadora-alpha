@@ -1,5 +1,6 @@
 package com.es.planificadoraalpha.alunos;
 
+import com.es.planificadoraalpha.usuarios.Professor;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -33,9 +34,12 @@ public class Aluno {
     @Column(name="objetivo_aprendizado")
     private String objetivoAprendizado;
 
+    @Column(name = "professor_id")
+    private int professorId;
+
     public Aluno() { }
 
-    public Aluno(String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String endereco, String nivel, String objetivoAprendizado) {
+    public Aluno(String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String endereco, String nivel, String objetivoAprendizado, int professorId) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -44,6 +48,7 @@ public class Aluno {
         this.endereco = endereco;
         this.nivel = nivel;
         this.objetivoAprendizado = objetivoAprendizado;
+        this.professorId = professorId;
     }
 
     public int getId() {
@@ -126,19 +131,12 @@ public class Aluno {
         this.objetivoAprendizado = objetivoAprendizado;
     }
 
-    @Override
-    public String toString() {
-        return "Aluno{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", endereço='" + endereco + '\'' +
-                ", nivel='" + nivel + '\'' +
-                ", objetivoAprendizado='" + objetivoAprendizado + '\'' +
-                '}';
+    public int getProfessorId() {
+        return professorId;
+    }
+
+    public void setProfessorId(int professorId) {
+        this.professorId = professorId;
     }
 
 }

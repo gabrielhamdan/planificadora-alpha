@@ -35,7 +35,7 @@ public class AuthService implements UserDetailsService {
 
         var token = tokenService.gerarToken((Professor) auth.getPrincipal());
 
-        return new AutenticacaoResponseDto(token);
+        return new AutenticacaoResponseDto(token, ((Professor) auth.getPrincipal()).getId());
     }
 
 }
