@@ -1,7 +1,11 @@
 package com.es.planificadoraalpha.alunos;
 
 import com.es.planificadoraalpha.services.ICrudService;
+import com.es.planificadoraalpha.usuarios.Professor;
+import com.es.planificadoraalpha.usuarios.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +15,7 @@ import java.util.Optional;
 public class AlunoService implements ICrudService<Aluno> {
 
     private AlunoRepository alunoRepository;
+    private final AlunoRepository alunoRepository;
 
     @Autowired
     public AlunoService(AlunoRepository alunoRepository) {
@@ -36,6 +41,11 @@ public class AlunoService implements ICrudService<Aluno> {
     @Override
     public void deleteById(int id) {
         alunoRepository.deleteById(id);
+    }
+
+    public List<Aluno> findByProfessorId() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return alunoRepository.findByProfessorId(((Professor) userDetails).getId());
     }
 
 }

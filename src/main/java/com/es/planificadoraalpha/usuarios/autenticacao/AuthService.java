@@ -22,4 +22,13 @@ public class AuthService implements UserDetailsService {
         return professorRepository.findByUsuario(username);
     }
 
+    public AutenticacaoResponseDto login(AutenticacaoDto autenticacaoDto, AuthenticationManager authenticationManager) {
+        var login = new UsernamePasswordAuthenticationToken(autenticacaoDto.usuario(), autenticacaoDto.senha());
+        var auth = authenticationManager.authenticate(login);
+
+        var token = tokenService.gerarToken((Professor) auth.getPrincipal());
+
+        return new AutenticacaoResponseDto(token, ((Professor) auth.getPrincipal()).getId());
+    }
+
 }
