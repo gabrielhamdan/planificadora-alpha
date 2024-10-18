@@ -20,15 +20,6 @@ CREATE TABLE privilegios
     FOREIGN KEY (usuario_id) REFERENCES professor (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-CREATE TABLE privilegios
-(
-    nome_usuario VARCHAR(50),
-    privilegio   varchar(50) NOT NULL,
-    UNIQUE KEY `priv_id` (nome_usuario, privilegio),
-    CONSTRAINT `priv_fk` FOREIGN KEY (nome_usuario) REFERENCES usuario (nome_usuario)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE aluno
 (
     id                   INT AUTO_INCREMENT PRIMARY KEY,
