@@ -39,7 +39,6 @@ public class Aluno {
 
     public Aluno() { }
 
-    public Aluno(String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String endereco, String nivel, String objetivoAprendizado) {
     public Aluno(String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String endereco, String nivel, String objetivoAprendizado, int professorId) {
         this.nome = nome;
         this.cpf = cpf;
@@ -132,19 +131,6 @@ public class Aluno {
         this.objetivoAprendizado = objetivoAprendizado;
     }
 
-    @Override
-    public String toString() {
-        return "Aluno{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", endereço='" + endereco + '\'' +
-                ", nivel='" + nivel + '\'' +
-                ", objetivoAprendizado='" + objetivoAprendizado + '\'' +
-                '}';
     public int getProfessorId() {
         return professorId;
     }

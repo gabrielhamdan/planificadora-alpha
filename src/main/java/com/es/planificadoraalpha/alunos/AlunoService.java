@@ -14,7 +14,6 @@ import java.util.Optional;
 @Service
 public class AlunoService implements ICrudService<Aluno> {
 
-    private AlunoRepository alunoRepository;
     private final AlunoRepository alunoRepository;
 
     @Autowired
