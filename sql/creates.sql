@@ -35,4 +35,4 @@ CREATE TABLE aluno
 );
 
 ALTER TABLE aluno ADD COLUMN professor_id INT;
-ALTER TABLE aluno ADD FOREIGN KEY (professor_id) REFERENCES professor(id);
+ALTER TABLE aluno ADD CONSTRAINT fk_professor FOREIGN KEY (professor_id) REFERENCES professor (id) ON DELETE CASCADE;

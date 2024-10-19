@@ -22,6 +22,12 @@ public class AutenticacaoController {
         this.authService = authService;
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity logout() {
+        authService.logout();
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AutenticacaoDto autenticacaoDto) {
         return ResponseEntity.ok(authService.login(autenticacaoDto, authenticationManager));

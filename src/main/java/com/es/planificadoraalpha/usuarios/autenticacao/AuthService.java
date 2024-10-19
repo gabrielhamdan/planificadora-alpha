@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,10 +34,15 @@ public class AuthService implements UserDetailsService {
     public AutenticacaoResponseDto login(AutenticacaoDto autenticacaoDto, AuthenticationManager authenticationManager) {
         var login = new UsernamePasswordAuthenticationToken(autenticacaoDto.usuario(), autenticacaoDto.senha());
         var auth = authenticationManager.authenticate(login);
-
         var token = tokenService.gerarToken((Professor) auth.getPrincipal());
 
         return new AutenticacaoResponseDto(token, ((Professor) auth.getPrincipal()).getId());
+    }
+
+    public void logout() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) return;
+        SecurityContextHolder.clearContext();
     }
 
 }
