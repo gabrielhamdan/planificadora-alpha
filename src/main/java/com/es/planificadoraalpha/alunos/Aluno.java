@@ -1,9 +1,11 @@
 package com.es.planificadoraalpha.alunos;
 
-import com.es.planificadoraalpha.usuarios.Professor;
+import com.es.planificadoraalpha.pacoteaulas.PacoteAula;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="aluno")
@@ -33,6 +35,10 @@ public class Aluno {
 
     @Column(name="objetivo_aprendizado")
     private String objetivoAprendizado;
+
+    @OneToMany(mappedBy = "aluno")
+    @JsonIgnore
+    private List<PacoteAula> pacotesAula;
 
     @Column(name = "professor_id")
     private int professorId;
@@ -129,6 +135,14 @@ public class Aluno {
 
     public void setObjetivoAprendizado(String objetivoAprendizado) {
         this.objetivoAprendizado = objetivoAprendizado;
+    }
+
+    public List<PacoteAula> getPacotesAula() {
+        return pacotesAula;
+    }
+
+    public void setPacotesAula(List<PacoteAula> pacotesAula) {
+        this.pacotesAula = pacotesAula;
     }
 
     public int getProfessorId() {

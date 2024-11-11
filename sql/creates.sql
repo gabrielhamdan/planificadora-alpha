@@ -36,3 +36,39 @@ CREATE TABLE aluno
 
 ALTER TABLE aluno ADD COLUMN professor_id INT;
 ALTER TABLE aluno ADD CONSTRAINT fk_professor FOREIGN KEY (professor_id) REFERENCES professor (id) ON DELETE CASCADE;
+
+CREATE TABLE pacote_aula (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao_local VARCHAR(255),
+    tipo_local VARCHAR(255),
+    valor_hora_aula FLOAT,
+    professor_id INT,
+    FOREIGN KEY (professor_id) REFERENCES professor(id)
+);
+
+CREATE TABLE aula (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pacote_aula_id INT,
+    status_aula VARCHAR(255),
+    data DATE,
+    hora_inicial TIME,
+    hora_final TIME,
+    tarefas_de_casa TEXT,
+    anotacoes TEXT,
+    professor_id INT,
+    FOREIGN KEY (pacote_aula_id) REFERENCES pacote_aula(id)
+);
+
+CREATE TABLE pagamento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data_pagamento DATE,
+    valor_pago FLOAT,
+    aula_id INT,
+    FOREIGN KEY (aula_id) REFERENCES aula(id) ON DELETE CASCADE
+);
+
+ALTER TABLE pacote_aula
+ADD COLUMN aluno_id INT;
+
+ALTER TABLE pacote_aula
+ADD CONSTRAINT fk_aluno FOREIGN KEY (aluno_id) REFERENCES aluno (id) ON DELETE CASCADE;
