@@ -47,4 +47,9 @@ public class AlunoService implements ICrudService<Aluno> {
         return alunoRepository.findByProfessorId(((Professor) userDetails).getId());
     }
 
+    public List<Aluno> findByNomeContainingIgnoreCaseAndProfessorId(String nome) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return alunoRepository.findByNomeContainingIgnoreCaseAndProfessorId(nome, ((Professor) userDetails).getId());
+    }
+
 }

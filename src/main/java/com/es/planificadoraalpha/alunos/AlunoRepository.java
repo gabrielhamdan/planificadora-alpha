@@ -8,4 +8,6 @@ public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
     List<Aluno> findByProfessorId(int id);
 
+    List<Aluno> findByNomeContainingIgnoreCaseAndProfessorId(String nome, int id);
+
 }

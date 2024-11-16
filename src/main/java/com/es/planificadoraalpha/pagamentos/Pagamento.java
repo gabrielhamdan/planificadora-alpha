@@ -1,6 +1,7 @@
 package com.es.planificadoraalpha.pagamentos;
 
 import com.es.planificadoraalpha.aulas.Aula;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class Pagamento {
 
     @OneToOne
     @JoinColumn(name="aula_id")
+    @JsonBackReference
     private Aula aula;
 
     public Pagamento() {}

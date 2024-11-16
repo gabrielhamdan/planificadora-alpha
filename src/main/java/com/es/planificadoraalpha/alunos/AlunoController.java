@@ -24,6 +24,11 @@ public class AlunoController {
         return alunoService.findById(id);
     }
 
+    @GetMapping("/search")
+    public List<Aluno> pesquisarAlunos(@RequestParam String nome) {
+        return alunoService.findByNomeContainingIgnoreCaseAndProfessorId(nome);
+    }
+
     @PostMapping
     public Aluno cadastrarAluno(@RequestBody Aluno aluno) {
         return alunoService.save(aluno);

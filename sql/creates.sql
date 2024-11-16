@@ -41,7 +41,7 @@ CREATE TABLE pacote_aula (
     id INT AUTO_INCREMENT PRIMARY KEY,
     descricao_local VARCHAR(255),
     tipo_local VARCHAR(255),
-    valor_hora_aula FLOAT,
+    valor_hora_aula DECIMAL(10, 2),
     professor_id INT,
     FOREIGN KEY (professor_id) REFERENCES professor(id)
 );
@@ -55,9 +55,11 @@ CREATE TABLE aula (
     hora_final TIME,
     tarefas_de_casa TEXT,
     anotacoes TEXT,
-    professor_id INT,
-    FOREIGN KEY (pacote_aula_id) REFERENCES pacote_aula(id)
+    professor_id INT
 );
+
+ALTER TABLE aula
+ADD CONSTRAINT fk_pacote_aula FOREIGN KEY (pacote_aula_id) REFERENCES pacote_aula(id) ON DELETE CASCADE;
 
 CREATE TABLE pagamento (
     id INT AUTO_INCREMENT PRIMARY KEY,

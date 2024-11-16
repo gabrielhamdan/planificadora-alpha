@@ -2,6 +2,8 @@ package com.es.planificadoraalpha.aulas;
 
 import com.es.planificadoraalpha.pacoteaulas.PacoteAula;
 import com.es.planificadoraalpha.pagamentos.Pagamento;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -33,11 +35,16 @@ public class Aula {
     private String anotacoes;
 
     @OneToOne(mappedBy = "aula")
+    @JsonManagedReference
     private Pagamento pagamento;
 
     @ManyToOne
     @JoinColumn(name = "pacote_aula_id")
+    @JsonBackReference
     private PacoteAula pacoteAula;
+
+    @Column(name = "professor_id")
+    private int professorId;
 
     public int getId() {
         return id;
@@ -101,6 +108,22 @@ public class Aula {
 
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
+    }
+
+    public PacoteAula getPacoteAula() {
+        return pacoteAula;
+    }
+
+    public void setPacoteAula(PacoteAula pacoteAula) {
+        this.pacoteAula = pacoteAula;
+    }
+
+    public int getProfessorId() {
+        return professorId;
+    }
+
+    public void setProfessorId(int professorId) {
+        this.professorId = professorId;
     }
 
 }

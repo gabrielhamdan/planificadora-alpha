@@ -2,6 +2,7 @@ package com.es.planificadoraalpha.pacoteaulas;
 
 import com.es.planificadoraalpha.alunos.Aluno;
 import com.es.planificadoraalpha.aulas.Aula;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,7 +19,8 @@ public class PacoteAula {
 
     private float valorHoraAula;
 
-    @OneToMany(mappedBy = "pacoteAula")
+    @OneToMany(mappedBy = "pacoteAula", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Aula> aulas;
 
     @ManyToOne
