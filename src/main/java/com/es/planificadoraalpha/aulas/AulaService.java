@@ -20,9 +20,9 @@ public class AulaService implements ICrudService<Aula> {
         this.aulaRepository = aulaRepository;
     }
 
-    public List<Aula> findByPacoteAulaId() {
+    public List<AulaAlunoDTO> findAulasByProfessorId() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return aulaRepository.findByPacoteAulaId(((Professor)userDetails).getId());
+        return aulaRepository.findAulasByProfessorId(((Professor)userDetails).getId());
     }
 
     @Override

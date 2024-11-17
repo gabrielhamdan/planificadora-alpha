@@ -17,8 +17,8 @@ public class AulaController {
     }
 
     @GetMapping
-    public List<Aula> listarAulas() {
-        return aulaService.findByPacoteAulaId();
+    public List<AulaAlunoDTO> listarAulas() {
+        return aulaService.findAulasByProfessorId();
     }
 
     @GetMapping("/{id}")
